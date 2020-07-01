@@ -9,6 +9,15 @@ jobs:
 
       - name: build package
         uses: jarias/makepkg-action@v1
+        env:
+          GPGKEY: arch@menari.io
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_KEY_PASSPHRASE: ${{ secrets.PASSPHRASE }}
+          GPG_KEY_GRIP: ${{ secrets.GPG_KEY_GRIP }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          BUCKET: arch.menari.io
+          REPO: menari
 
       - uses: actions/upload-artifact@v2
         with:
